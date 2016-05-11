@@ -7,8 +7,11 @@
 //
 
 #import "GameScene.h"
+#import "TimerProtocol.h"
 
 @implementation GameScene
+
+@synthesize delegate;
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
@@ -21,7 +24,7 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    
+    [delegate tickTimer:self];
 }
 
 @end

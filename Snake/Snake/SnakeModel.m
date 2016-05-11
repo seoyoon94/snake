@@ -7,9 +7,10 @@
 //
 
 #import "SnakeModel.h"
-#import "Snake.h"
-#import "SnakePiece.h"
 #import "Food.h"
+#import "SnakePiece.h"
+#import "Snake.h"
+#import "SnakeProtocol.h"
 #include <stdlib.h>
 
 @implementation SnakeModel
@@ -18,6 +19,7 @@
 @synthesize boardSize;
 @synthesize snake;
 @synthesize food;
+@synthesize delegate;
 
 - (void) initGame{
     [self setBoardSize:11];
@@ -32,9 +34,9 @@
     }
     
     //Initialize the entire snake with individual pieces.
-    //Row will always be half the board size subtracted with half the snake length
+    //Row will always be half the board size added with half the snake length
     SnakePiece *head = [[SnakePiece alloc] init];
-    [head initWithRow:(boardSize/2 - 1) column:boardSize/2];
+    [head initWithRow:(boardSize/2 + 1) column:boardSize/2];
     [snake initWithDirection:DOWN head:head length:3];
     for(int i = 0; i < [snake length] - 1; i++){
         [snake addPiece];
@@ -65,6 +67,25 @@
     gameBoard[row][column] = food;
 }
 
+/* Move the snake each time the timer ticks. If the snake collides, then end game */
+- (void) moveSnake{
+    SnakePiece *tail = [[SnakePiece alloc] init];
+    [tail initWithRow:[[snake tail] row] column:[[snake tail] col]];
+    [snake movePieces];
+    if(![self validMove]){
+        [snake revertPieces];
+        [self endGame];
+    }
+    else{
+        if([gameBoard[[[snake head] row]][[[snake head] col]] isKindOfClass:[Food class]]){
+            
+        }
+        gameBoard[[tail row]][[tail col]] = [NSNull null];
+        gameBoard[[[snake head] row]][[[snake head] col]] = [snake head];
+        [delegate snakeDidMove:self];
+    }
+}
+
 /* Determine if snake has collided with bounds or itself */
 - (BOOL) validMove{
     //Check to see if snake moved out of bounds
@@ -79,6 +100,11 @@
         }
     }
     return YES;
+}
+
+/* End the game and reset the game */
+- (void) endGame{
+    [delegate gameDidEnd:self];
 }
 
 @end

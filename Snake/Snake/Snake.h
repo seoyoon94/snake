@@ -25,13 +25,13 @@
 @property int length;
 @property NSMutableArray *snakeQueue;
 @property SnakePiece *head;
+@property SnakePiece *tail;
 
 - (void) initWithDirection:(enum Orientation) dir
                       head:(SnakePiece *)headPiece
                     length:(int) length;
-
 - (void) addPiece;
-
-- (void) moveSnake;
+- (void) movePieces;
+- (void) revertPieces;
 
 @end

@@ -10,4 +10,6 @@
 
 @interface GameScene : SKScene
 
+@property (weak, nonatomic) id delegate;
+
 @end

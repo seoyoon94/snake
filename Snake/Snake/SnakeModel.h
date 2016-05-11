@@ -17,8 +17,12 @@
 @property NSMutableArray *gameBoard;
 @property Snake *snake;
 @property Food *food;
+@property (weak, nonatomic) id delegate;
 
 - (void) initGame;
 - (void) generateFood;
+- (void) moveSnake;
+- (BOOL) validMove;
+- (void) endGame;
 
 @end

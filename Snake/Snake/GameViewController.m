@@ -48,13 +48,15 @@
     //Initialize the game
     model = [[SnakeModel alloc] init];
     [model initGame];
+    [model setDelegate:self];
     
     // Create and configure the scene.
-    GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
+    gameScene = [[GameScene alloc] init];
+    [gameScene setDelegate: self];
+    gameScene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
-    [skView presentScene:scene];
+    [skView presentScene:gameScene];
 }
 
 - (BOOL)shouldAutorotate
@@ -79,6 +81,20 @@
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+/********** Protocol Implementations ************/
+- (void) tickTimer:(GameScene *)scene{
+    [model moveSnake];
+}
+
+
+- (void) snakeDidMove:(SnakeModel *)game{
+    
+}
+
+- (void) gameDidEnd:(SnakeModel *)game{
+    
 }
 
 @end
