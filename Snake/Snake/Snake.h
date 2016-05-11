@@ -11,6 +11,7 @@
 #import <Foundation/Foundation.h>
 
 @class SnakePiece;
+@class Food;
 
 @interface Snake : NSObject{
     NS_ENUM(int, Orientation){

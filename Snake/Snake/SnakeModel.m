@@ -69,18 +69,25 @@
 
 /* Move the snake each time the timer ticks. If the snake collides, then end game */
 - (void) moveSnake{
+    //Keep track of previous tail so we can null the location of the previous tail if no food eaten
     SnakePiece *tail = [[SnakePiece alloc] init];
     [tail initWithRow:[[snake tail] row] column:[[snake tail] col]];
+    
     [snake movePieces];
+    //End game if we hit ourselves or the wall
     if(![self validMove]){
         [snake revertPieces];
         [self endGame];
     }
+    //The move is valid so check to see if there is an empty space or if the snake ate food
     else{
         if([gameBoard[[[snake head] row]][[[snake head] col]] isKindOfClass:[Food class]]){
-            
+            [snake addPiece];
+            [self generateFood];
         }
-        gameBoard[[tail row]][[tail col]] = [NSNull null];
+        else{
+            gameBoard[[tail row]][[tail col]] = [NSNull null];
+        }
         gameBoard[[[snake head] row]][[[snake head] col]] = [snake head];
         [delegate snakeDidMove:self];
     }
