@@ -8,6 +8,7 @@
 
 #import "GameViewController.h"
 #import "GameScene.h"
+#import "SnakeModel.h"
 
 @implementation SKScene (Unarchive)
 
@@ -30,6 +31,9 @@
 
 @implementation GameViewController
 
+@synthesize gameScene;
+@synthesize model;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -40,6 +44,10 @@
     skView.showsNodeCount = YES;
     /* Sprite Kit applies additional optimizations to improve rendering performance */
     skView.ignoresSiblingOrder = YES;
+    
+    //Initialize the game
+    model = [[SnakeModel alloc] init];
+    [model initGame];
     
     // Create and configure the scene.
     GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];

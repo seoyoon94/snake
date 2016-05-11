@@ -1,5 +1,5 @@
 //
-//  NSMutableArray+Queue.h
+//  NSMutableArray+Deque.h
 //  Snake
 //
 //  Created by Seoyoon Park on 5/11/16.
@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSMutableArray (Queue)
+@interface NSMutableArray (Deque)
 
 - (BOOL) empty;
 - (NSUInteger) size;
 - (id) front;
 - (id) back;
-- (void) push:(id)obj;
-- (void) pop;
+- (void) pushFront:(id)obj;
+- (void) pushBack:(id)obj;
+- (void) popFront;
+- (void) popBack;
 
 @end

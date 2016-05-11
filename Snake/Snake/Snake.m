@@ -8,54 +8,54 @@
 
 #import "Snake.h"
 #import "SnakePiece.h"
-#import "NSMutableArray+Queue.h"
+#import "NSMutableArray+Deque.h"
 
 @implementation Snake
 
 @synthesize direction;
 @synthesize length;
 @synthesize snakeQueue;
-@synthesize headCol;
-@synthesize headRow;
+@synthesize head;
 
 - (void) initWithDirection:(enum Orientation)dir
-                   headRow:(int)row
-                headColumn:(int)column
+                      head:(SnakePiece *)headPiece
                     length:(int)len{
     [self setDirection:dir];
     [self setLength:len];
-    [self setHeadRow:row];
-    [self setHeadCol:column];
+    [self setHead:headPiece];
     
     snakeQueue = [[NSMutableArray alloc] init];
     
-    for(int i = 0; i < len; i++){
-        SnakePiece *piece = [[SnakePiece alloc] init];
-        [piece initWithRow:(headRow - i) column:headCol];
-        [snakeQueue push:piece];
-    }
+    SnakePiece *piece = [[SnakePiece alloc] init];
+    [piece initWithRow:[head row] column:[head col]];
+    [snakeQueue pushBack:piece];
 }
 
 - (void) addPiece{
     SnakePiece *piece = [[SnakePiece alloc] init];
-    SnakePiece *lastPiece = [snakeQueue back];
     switch (direction) {
         case UP:
-            [piece initWithRow:([lastPiece row] + 1) column:[lastPiece col]];
+            [piece initWithRow:([head row] - 1) column:[head col]];
             break;
         case DOWN:
-            [piece initWithRow:([lastPiece row] - 1) column:[lastPiece col]];
+            [piece initWithRow:([head row] + 1) column:[head col]];
             break;
         case LEFT:
-            [piece initWithRow:[lastPiece row] column:([lastPiece col] + 1)];
+            [piece initWithRow:[head row] column:([head col] + 1)];
             break;
         case RIGHT:
-            [piece initWithRow:[lastPiece row] column:([lastPiece col] - 1)];
+            [piece initWithRow:[head row] column:([head col] - 1)];
             break;
         default:
             break;
     }
-    [snakeQueue push:piece];
+    [snakeQueue pushFront:piece];
+    [self setHead:piece];
+}
+
+- (void) moveSnake{
+    [snakeQueue popBack];
+    [self addPiece];
 }
 
 @end

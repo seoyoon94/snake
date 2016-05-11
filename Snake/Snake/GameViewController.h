@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 
+@class SnakeModel;
+@class GameScene;
+
 @interface GameViewController : UIViewController
+
+@property SnakeModel *model;
+@property GameScene *gameScene;
 
 @end

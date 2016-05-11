@@ -24,21 +24,31 @@
     
     gameBoard = [[NSMutableArray alloc] initWithCapacity:boardSize];
     for(int i = 0; i < boardSize; i++){
-        NSMutableArray *rows = [[NSMutableArray alloc] init];
+        NSMutableArray *column = [[NSMutableArray alloc] initWithCapacity:boardSize];
         for(int j = 0; j < boardSize; j++){
-            NSMutableArray *columns = [[NSMutableArray alloc] init];
-            [rows addObject:columns];
+            [column addObject:[NSNull null]];
         }
-        [gameBoard addObject:rows];
+        [gameBoard addObject:column];
     }
     
     //Initialize the entire snake with individual pieces.
-    //Row will always be half the board size added with half the snake length
-    [snake initWithDirection:DOWN headRow:(boardSize/2 + 1) headColumn:boardSize/2 length:3];
+    //Row will always be half the board size subtracted with half the snake length
+    SnakePiece *head = [[SnakePiece alloc] init];
+    [head initWithRow:(boardSize/2 - 1) column:boardSize/2];
+    [snake initWithDirection:DOWN head:head length:3];
+    for(int i = 0; i < [snake length] - 1; i++){
+        [snake addPiece];
+    }
+    for(SnakePiece *piece in [snake snakeQueue]){
+        gameBoard[[piece row]][[piece col]] = piece;
+    }
+    
+    //Add the snake food onto the board
     food = [[Food alloc] init];
     [self generateFood];
 }
 
+/* Generates the snake food randomly on the board */
 - (void) generateFood{
     int row = arc4random_uniform(boardSize);
     int column = arc4random_uniform(boardSize);
@@ -53,6 +63,22 @@
     }
     [food initWithRow:row column:column];
     gameBoard[row][column] = food;
+}
+
+/* Determine if snake has collided with bounds or itself */
+- (BOOL) validMove{
+    //Check to see if snake moved out of bounds
+    if([[snake head] row] < 0 || [[snake head] row] >= boardSize
+       || [[snake head] col] < 0 || [[snake head] col] >= boardSize){
+        return NO;
+    }
+    //Check to see if snake collided with itself
+    else if(gameBoard[[[snake head] row]][[[snake head] col]] != nil){
+        if(![gameBoard[[[snake head] row]][[[snake head] col]] isKindOfClass:[Food class]]){
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end

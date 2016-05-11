@@ -24,14 +24,14 @@
 @property enum Orientation direction;
 @property int length;
 @property NSMutableArray *snakeQueue;
-@property int headRow;
-@property int headCol;
+@property SnakePiece *head;
 
 - (void) initWithDirection:(enum Orientation) dir
-                   headRow:(int) row
-                headColumn:(int) column
+                      head:(SnakePiece *)headPiece
                     length:(int) length;
 
 - (void) addPiece;
+
+- (void) moveSnake;
 
 @end
