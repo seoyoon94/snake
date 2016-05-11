@@ -9,13 +9,16 @@
 #import <Foundation/Foundation.h>
 
 @class Snake;
+@class Food;
 
 @interface SnakeModel : NSObject
     
 @property int boardSize;
-@property NSMutableArray* gameBoard;
-@property Snake* player;
+@property NSMutableArray *gameBoard;
+@property Snake *snake;
+@property Food *food;
 
 - (void) initGame;
+- (void) generateFood;
 
 @end

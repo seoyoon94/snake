@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0606DEB1CE3A5AD004922E6 /* NSMutableArray+Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = E0606DEA1CE3A5AD004922E6 /* NSMutableArray+Queue.m */; };
+		E0606DEE1CE3AB44004922E6 /* SnakePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = E0606DED1CE3AB44004922E6 /* SnakePiece.m */; };
+		E0606DF11CE3B53B004922E6 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = E0606DF01CE3B53B004922E6 /* Food.m */; };
 		E0F7348A1CE3762F004C8121 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F734891CE3762F004C8121 /* main.m */; };
 		E0F7348D1CE3762F004C8121 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F7348C1CE3762F004C8121 /* AppDelegate.m */; };
 		E0F734901CE3762F004C8121 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F7348F1CE3762F004C8121 /* GameScene.m */; };
@@ -39,6 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E0606DE91CE3A5AD004922E6 /* NSMutableArray+Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Queue.h"; sourceTree = "<group>"; };
+		E0606DEA1CE3A5AD004922E6 /* NSMutableArray+Queue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Queue.m"; sourceTree = "<group>"; };
+		E0606DEC1CE3AB44004922E6 /* SnakePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnakePiece.h; path = Snake/SnakePiece.h; sourceTree = "<group>"; };
+		E0606DED1CE3AB44004922E6 /* SnakePiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnakePiece.m; path = Snake/SnakePiece.m; sourceTree = "<group>"; };
+		E0606DEF1CE3B53B004922E6 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Food.h; path = Snake/Food.h; sourceTree = "<group>"; };
+		E0606DF01CE3B53B004922E6 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Food.m; path = Snake/Food.m; sourceTree = "<group>"; };
 		E0F734851CE3762F004C8121 /* Snake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0F734891CE3762F004C8121 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E0F7348B1CE3762F004C8121 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -58,8 +67,8 @@
 		E0F734AE1CE3762F004C8121 /* SnakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnakeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0F734B21CE3762F004C8121 /* SnakeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnakeUITests.m; sourceTree = "<group>"; };
 		E0F734B41CE3762F004C8121 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E0F734C01CE376DF004C8121 /* Snake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snake.h; sourceTree = "<group>"; };
-		E0F734C11CE376DF004C8121 /* Snake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snake.m; sourceTree = "<group>"; };
+		E0F734C01CE376DF004C8121 /* Snake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Snake.h; path = Snake/Snake.h; sourceTree = "<group>"; };
+		E0F734C11CE376DF004C8121 /* Snake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Snake.m; path = Snake/Snake.m; sourceTree = "<group>"; };
 		E0F734C31CE37724004C8121 /* SnakeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnakeModel.h; sourceTree = "<group>"; };
 		E0F734C41CE37724004C8121 /* SnakeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnakeModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,9 +98,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E0606DF21CE3B553004922E6 /* Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				E0606DEF1CE3B53B004922E6 /* Food.h */,
+				E0606DF01CE3B53B004922E6 /* Food.m */,
+				E0606DEC1CE3AB44004922E6 /* SnakePiece.h */,
+				E0606DED1CE3AB44004922E6 /* SnakePiece.m */,
+				E0F734C01CE376DF004C8121 /* Snake.h */,
+				E0F734C11CE376DF004C8121 /* Snake.m */,
+			);
+			name = Blocks;
+			sourceTree = "<group>";
+		};
 		E0F7347C1CE3762F004C8121 = {
 			isa = PBXGroup;
 			children = (
+				E0606DE91CE3A5AD004922E6 /* NSMutableArray+Queue.h */,
+				E0606DEA1CE3A5AD004922E6 /* NSMutableArray+Queue.m */,
+				E0606DF21CE3B553004922E6 /* Blocks */,
 				E0F734871CE3762F004C8121 /* Snake */,
 				E0F734A61CE3762F004C8121 /* SnakeTests */,
 				E0F734B11CE3762F004C8121 /* SnakeUITests */,
@@ -116,8 +141,6 @@
 				E0F7348C1CE3762F004C8121 /* AppDelegate.m */,
 				E0F7348E1CE3762F004C8121 /* GameScene.h */,
 				E0F7348F1CE3762F004C8121 /* GameScene.m */,
-				E0F734C01CE376DF004C8121 /* Snake.h */,
-				E0F734C11CE376DF004C8121 /* Snake.m */,
 				E0F734C31CE37724004C8121 /* SnakeModel.h */,
 				E0F734C41CE37724004C8121 /* SnakeModel.m */,
 				E0F734911CE3762F004C8121 /* GameScene.sks */,
@@ -289,12 +312,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0606DF11CE3B53B004922E6 /* Food.m in Sources */,
 				E0F734C51CE37724004C8121 /* SnakeModel.m in Sources */,
+				E0606DEB1CE3A5AD004922E6 /* NSMutableArray+Queue.m in Sources */,
 				E0F734C21CE376DF004C8121 /* Snake.m in Sources */,
 				E0F734951CE3762F004C8121 /* GameViewController.m in Sources */,
 				E0F7348D1CE3762F004C8121 /* AppDelegate.m in Sources */,
 				E0F734901CE3762F004C8121 /* GameScene.m in Sources */,
 				E0F7348A1CE3762F004C8121 /* main.m in Sources */,
+				E0606DEE1CE3AB44004922E6 /* SnakePiece.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +548,7 @@
 				E0F734B91CE3762F004C8121 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E0F734BA1CE3762F004C8121 /* Build configuration list for PBXNativeTarget "SnakeTests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +557,7 @@
 				E0F734BC1CE3762F004C8121 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E0F734BD1CE3762F004C8121 /* Build configuration list for PBXNativeTarget "SnakeUITests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +566,7 @@
 				E0F734BF1CE3762F004C8121 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
