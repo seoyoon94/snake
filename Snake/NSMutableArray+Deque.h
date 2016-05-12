@@ -10,13 +10,13 @@
 
 @interface NSMutableArray (Deque)
 
-- (BOOL) empty;
-- (NSUInteger) size;
-- (id) front;
-- (id) back;
-- (void) pushFront:(id)obj;
-- (void) pushBack:(id)obj;
-- (void) popFront;
-- (void) popBack;
+-(BOOL)empty;
+-(NSUInteger)size;
+-(id)front;
+-(id)back;
+-(void)pushFront:(id)obj;
+-(void)pushBack:(id)obj;
+-(void)popFront;
+-(void)popBack;
 
 @end

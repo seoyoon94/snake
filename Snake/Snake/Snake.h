@@ -28,11 +28,11 @@
 @property SnakePiece *head;
 @property SnakePiece *tail;
 
-- (void) initWithDirection:(enum Orientation) dir
+-(void)initWithDirection:(enum Orientation) dir
                       head:(SnakePiece *)headPiece
                     length:(int) length;
-- (void) addPiece;
-- (void) movePieces;
-- (void) revertPieces;
+-(void)addPiece;
+-(void)movePieces;
+-(void)revertPieces;
 
 @end

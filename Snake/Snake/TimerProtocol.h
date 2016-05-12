@@ -11,6 +11,6 @@
 
 @protocol TimerProtocol <NSObject>
 
-- (void) tickTimer:(GameScene *)scene;
+-(void)tickTimer:(GameScene *)scene;
 
 @end

@@ -10,6 +10,9 @@
 		E0606DEB1CE3A5AD004922E6 /* NSMutableArray+Deque.m in Sources */ = {isa = PBXBuildFile; fileRef = E0606DEA1CE3A5AD004922E6 /* NSMutableArray+Deque.m */; };
 		E0606DEE1CE3AB44004922E6 /* SnakePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = E0606DED1CE3AB44004922E6 /* SnakePiece.m */; };
 		E0606DF11CE3B53B004922E6 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = E0606DF01CE3B53B004922E6 /* Food.m */; };
+		E0606DF71CE3F9E0004922E6 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E0606DF61CE3F9E0004922E6 /* background.png */; };
+		E0606DFE1CE40626004922E6 /* gameTile.png in Resources */ = {isa = PBXBuildFile; fileRef = E0606DFD1CE40626004922E6 /* gameTile.png */; };
+		E0606E001CE408DB004922E6 /* food.png in Resources */ = {isa = PBXBuildFile; fileRef = E0606DFF1CE408DB004922E6 /* food.png */; };
 		E0F7348A1CE3762F004C8121 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F734891CE3762F004C8121 /* main.m */; };
 		E0F7348D1CE3762F004C8121 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F7348C1CE3762F004C8121 /* AppDelegate.m */; };
 		E0F734901CE3762F004C8121 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F7348F1CE3762F004C8121 /* GameScene.m */; };
@@ -50,6 +53,9 @@
 		E0606DF01CE3B53B004922E6 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Food.m; path = Snake/Food.m; sourceTree = "<group>"; };
 		E0606DF31CE3D99B004922E6 /* TimerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimerProtocol.h; path = Snake/TimerProtocol.h; sourceTree = "<group>"; };
 		E0606DF51CE3E2EA004922E6 /* SnakeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnakeProtocol.h; sourceTree = "<group>"; };
+		E0606DF61CE3F9E0004922E6 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Snake/background.png; sourceTree = "<group>"; };
+		E0606DFD1CE40626004922E6 /* gameTile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameTile.png; sourceTree = "<group>"; };
+		E0606DFF1CE408DB004922E6 /* food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food.png; sourceTree = "<group>"; };
 		E0F734851CE3762F004C8121 /* Snake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0F734891CE3762F004C8121 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E0F7348B1CE3762F004C8121 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -122,11 +128,22 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		E0606DF81CE3F9FF004922E6 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E0606DF61CE3F9E0004922E6 /* background.png */,
+				E0606DFD1CE40626004922E6 /* gameTile.png */,
+				E0606DFF1CE408DB004922E6 /* food.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		E0F7347C1CE3762F004C8121 = {
 			isa = PBXGroup;
 			children = (
 				E0606DE91CE3A5AD004922E6 /* NSMutableArray+Deque.h */,
 				E0606DEA1CE3A5AD004922E6 /* NSMutableArray+Deque.m */,
+				E0606DF81CE3F9FF004922E6 /* Images */,
 				E0606DF41CE3DD78004922E6 /* Protocols */,
 				E0606DF21CE3B553004922E6 /* Blocks */,
 				E0F734871CE3762F004C8121 /* Snake */,
@@ -297,7 +314,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0F734921CE3762F004C8121 /* GameScene.sks in Resources */,
+				E0606DF71CE3F9E0004922E6 /* background.png in Resources */,
 				E0F7349D1CE3762F004C8121 /* LaunchScreen.storyboard in Resources */,
+				E0606DFE1CE40626004922E6 /* gameTile.png in Resources */,
+				E0606E001CE408DB004922E6 /* food.png in Resources */,
 				E0F7349A1CE3762F004C8121 /* Assets.xcassets in Resources */,
 				E0F734981CE3762F004C8121 /* Main.storyboard in Resources */,
 			);

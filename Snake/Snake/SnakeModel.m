@@ -21,7 +21,7 @@
 @synthesize food;
 @synthesize delegate;
 
-- (void) initGame{
+-(void)initGame{
     [self setBoardSize:11];
     
     gameBoard = [[NSMutableArray alloc] initWithCapacity:boardSize];
@@ -35,6 +35,7 @@
     
     //Initialize the entire snake with individual pieces.
     //Row will always be half the board size added with half the snake length
+    snake = [[Snake alloc] init];
     SnakePiece *head = [[SnakePiece alloc] init];
     [head initWithRow:(boardSize/2 + 1) column:boardSize/2];
     [snake initWithDirection:DOWN head:head length:3];
@@ -51,7 +52,7 @@
 }
 
 /* Generates the snake food randomly on the board */
-- (void) generateFood{
+-(void)generateFood{
     int row = arc4random_uniform(boardSize);
     int column = arc4random_uniform(boardSize);
     
@@ -65,10 +66,11 @@
     }
     [food initWithRow:row column:column];
     gameBoard[row][column] = food;
+    [delegate foodGeneratedAtRow:row column:column];
 }
 
 /* Move the snake each time the timer ticks. If the snake collides, then end game */
-- (void) moveSnake{
+-(void)moveSnake{
     //Keep track of previous tail so we can null the location of the previous tail if no food eaten
     SnakePiece *tail = [[SnakePiece alloc] init];
     [tail initWithRow:[[snake tail] row] column:[[snake tail] col]];
@@ -94,7 +96,7 @@
 }
 
 /* Determine if snake has collided with bounds or itself */
-- (BOOL) validMove{
+-(BOOL)validMove{
     //Check to see if snake moved out of bounds
     if([[snake head] row] < 0 || [[snake head] row] >= boardSize
        || [[snake head] col] < 0 || [[snake head] col] >= boardSize){
@@ -110,7 +112,7 @@
 }
 
 /* End the game and reset the game */
-- (void) endGame{
+-(void)endGame{
     [delegate gameDidEnd:self];
 }
 

@@ -18,7 +18,7 @@
 @synthesize head;
 @synthesize tail;
 
-- (void) initWithDirection:(enum Orientation)dir
+-(void)initWithDirection:(enum Orientation)dir
                       head:(SnakePiece *)headPiece
                     length:(int)len{
     [self setDirection:dir];
@@ -34,7 +34,7 @@
 }
 
 /* Add a piece to the tail of the snake */
-- (void) addPiece{
+-(void)addPiece{
     SnakePiece *piece = [[SnakePiece alloc] init];
     switch (direction) {
         case UP:
@@ -57,7 +57,7 @@
 }
 
 /* Move the snake one location forward depending on which direction the snake is moving */
-- (void) movePieces{
+-(void)movePieces{
     SnakePiece *newPiece = [[SnakePiece alloc] init];
     switch (direction) {
         case UP:
@@ -81,7 +81,7 @@
 }
 
 /* Shift the snake back if collision occurs to prevent errors */
-- (void) revertPieces{
+-(void)revertPieces{
     [self addPiece];
     [snakeQueue popFront];
     [self setHead:[snakeQueue front]];

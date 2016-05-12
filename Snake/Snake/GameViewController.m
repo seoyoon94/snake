@@ -34,7 +34,7 @@
 @synthesize gameScene;
 @synthesize model;
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
     [super viewDidLoad];
 
@@ -59,12 +59,12 @@
     [skView presentScene:gameScene];
 }
 
-- (BOOL)shouldAutorotate
+-(BOOL)shouldAutorotate
 {
     return YES;
 }
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         return UIInterfaceOrientationMaskAllButUpsideDown;
@@ -73,28 +73,32 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
+-(void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
 }
 
-- (BOOL)prefersStatusBarHidden {
+-(BOOL)prefersStatusBarHidden {
     return YES;
 }
 
 /********** Protocol Implementations ************/
-- (void) tickTimer:(GameScene *)scene{
+-(void) tickTimer:(GameScene *)scene{
     [model moveSnake];
 }
 
 
-- (void) snakeDidMove:(SnakeModel *)game{
+-(void)snakeDidMove:(SnakeModel *)game{
+    [gameScene redrawSnake:[game snake]];
+}
+
+-(void)gameDidEnd:(SnakeModel *)game{
     
 }
 
-- (void) gameDidEnd:(SnakeModel *)game{
-    
+-(void)foodGeneratedAtRow:(int)row column:(int)col{
+    [gameScene drawFoodAtRow:row column:col];
 }
 
 @end

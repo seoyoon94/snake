@@ -13,7 +13,7 @@
 @synthesize row;
 @synthesize col;
 
-- (void) initWithRow:(int)rowIdx column:(int)colIdx{
+-(void)initWithRow:(int)rowIdx column:(int)colIdx{
     [self setRow:rowIdx];
     [self setCol:colIdx];
 }

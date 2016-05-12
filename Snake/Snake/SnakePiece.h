@@ -15,7 +15,7 @@
 @property int row;
 @property int col;
 
-- (void) initWithRow:(int)row
+-(void)initWithRow:(int)row
               column:(int)col;
 
 @end
