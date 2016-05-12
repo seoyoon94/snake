@@ -56,8 +56,9 @@
     model = [[SnakeModel alloc] init];
     [model setDelegate:self];
     [model initGame];
+    [model startGame];
 }
-
+    
 -(BOOL)shouldAutorotate
 {
     return YES;
@@ -92,8 +93,16 @@
     [gameScene redrawSnake:[game snake]];
 }
 
+-(void)snakeAteFood:(SnakeModel *)game{
+    [gameScene drawAddedPiece:[game snake]];
+}
+
+-(void)gameDidStart:(SnakeModel *)game{
+    [gameScene drawSnake:[game snake]];
+}
+
 -(void)gameDidEnd:(SnakeModel *)game{
-    
+    [gameScene stopTicking];
 }
 
 -(void)foodGeneratedAtRow:(int)row column:(int)col{

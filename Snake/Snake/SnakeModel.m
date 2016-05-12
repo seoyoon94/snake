@@ -46,9 +46,15 @@
         gameBoard[[piece row]][[piece col]] = piece;
     }
     
-    //Add the snake food onto the board
-    food = [[Food alloc] init];
-    [self generateFood];
+    food = nil;
+}
+
+-(void)startGame{
+    if(food == nil){
+        food = [[Food alloc] init];
+        [self generateFood];
+    }
+    [delegate gameDidStart:self];
 }
 
 /* Generates the snake food randomly on the board */
@@ -57,10 +63,8 @@
     int column = arc4random_uniform(boardSize);
     
     for(SnakePiece *temp in [snake snakeQueue]){
-        while([temp row] == row){
+        while([temp row] == row && [temp col] == column){
             row = arc4random_uniform(boardSize);
-        }
-        while([temp col] == column){
             column = arc4random_uniform(boardSize);
         }
     }
@@ -85,12 +89,17 @@
     else{
         if([gameBoard[[[snake head] row]][[[snake head] col]] isKindOfClass:[Food class]]){
             [snake addPiece];
+            [delegate snakeAteFood:self];
             [self generateFood];
         }
         else{
             gameBoard[[tail row]][[tail col]] = [NSNull null];
         }
-        gameBoard[[[snake head] row]][[[snake head] col]] = [snake head];
+        for(int i = 0; i < [[snake snakeQueue] count]; i++){
+            int row = [(SnakePiece *)[snake snakeQueue][i] row];
+            int col = [[snake snakeQueue][i] col];
+            gameBoard[row][col] = [snake snakeQueue][i];
+        }
         [delegate snakeDidMove:self];
     }
 }
@@ -103,7 +112,7 @@
         return NO;
     }
     //Check to see if snake collided with itself
-    else if(gameBoard[[[snake head] row]][[[snake head] col]] != nil){
+    else if(![gameBoard[[[snake head] row]][[[snake head] col]] isKindOfClass:[NSNull class]]){
         if(![gameBoard[[[snake head] row]][[[snake head] col]] isKindOfClass:[Food class]]){
             return NO;
         }

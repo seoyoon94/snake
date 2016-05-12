@@ -17,9 +17,18 @@
 @property CGFloat boardOriginY;
 @property CGFloat tileSize;
 @property SKSpriteNode *background;
+@property NSDate *previousTick;
+@property NSTimeInterval levelSpeedInMillis;
 
+-(void)startTicking;
+-(void)stopTicking;
+-(void)drawSnake:(Snake *)model;
+-(void)drawAddedPiece:(Snake *)model;
 -(void)redrawSnake:(Snake *)model;
 -(void)drawFoodAtRow:(int)row
               column:(int)col;
+
+-(CGPoint)generatePositionAtRow:(int)row
+                    atColumn:(int)col;
 
 @end

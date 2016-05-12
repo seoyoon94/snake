@@ -18,6 +18,8 @@
 @synthesize boardOriginY;
 @synthesize tileSize;
 @synthesize background;
+@synthesize previousTick;
+@synthesize levelSpeedInMillis;
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
@@ -40,11 +42,14 @@
         for(int j = 0; j < 11; j++){
             SKSpriteNode *gameTile = [[SKSpriteNode alloc] initWithImageNamed:@"gameTile.png"];
             gameTile.size = CGSizeMake(tileSize, tileSize);
-            gameTile.position = CGPointMake((tileSize * i) + boardOriginX, boardOriginY + (j * tileSize));
+            gameTile.position = [self generatePositionAtRow:i atColumn:j];
             gameTile.zPosition = 0;
             [background addChild:gameTile];
         }
     }
+    
+    [self setLevelSpeedInMillis:600];
+    [self setPreviousTick:nil];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -54,22 +59,68 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    [delegate tickTimer:self];
+    if(previousTick == nil){
+        return;
+    }
+    NSTimeInterval timePassed = previousTick.timeIntervalSinceNow * -1000.0;
+    if(timePassed > levelSpeedInMillis){
+        previousTick = [NSDate date];
+        [delegate tickTimer:self];
+    }
+}
+
+-(void)startTicking{
+    previousTick = [NSDate date];
+}
+
+-(void)stopTicking{
+    previousTick = nil;
+}
+
+-(void)drawSnake:(Snake *)model{
+    for(SnakePiece *piece in [model snakeQueue]){
+        SKSpriteNode *sprite = [[SKSpriteNode alloc] initWithImageNamed:@"snakePiece.png"];
+        sprite.size = CGSizeMake(tileSize, tileSize);
+        sprite.position = [self generatePositionAtRow:[piece row] atColumn:[piece col]];
+        sprite.zPosition = 1;
+        [background addChild:sprite];
+        piece.sprite = sprite;
+    }
+    [self startTicking];
+}
+
+-(void)drawAddedPiece:(Snake *)model{
+    SKSpriteNode *piece = [[SKSpriteNode alloc] initWithImageNamed:@"snakePiece.png"];
+    piece.size = CGSizeMake(tileSize, tileSize);
+    piece.position = [self generatePositionAtRow:[[model tail] row] atColumn:[[model tail] col]];
+    piece.zPosition = 1;
+    [background addChild:piece];
+    [[model tail] setSprite:piece];
 }
 
 -(void)redrawSnake:(Snake *)model{
     //Use SKAction to move each individual spite in the snake to the new location.
     for(SnakePiece *piece in [model snakeQueue]){
         SKSpriteNode *sprite = [piece sprite];
+        CGPoint newLocation = [self generatePositionAtRow:[piece row] atColumn:[piece col]];
+        SKAction *moveToAction = [SKAction moveTo:newLocation duration:0.1];
+        moveToAction.timingMode = SKActionTimingEaseOut;
+        [sprite runAction:moveToAction];
     }
 }
 
 -(void)drawFoodAtRow:(int)row column:(int)col{
     SKSpriteNode *food = [[SKSpriteNode alloc] initWithImageNamed:@"food.png"];
     food.size = CGSizeMake(tileSize, tileSize);
-    food.position = CGPointMake(boardOriginX + (row * tileSize), boardOriginY + (col * tileSize));
+    food.position = [self generatePositionAtRow:row atColumn:col];
     food.zPosition = 1;
     [background addChild:food];
+}
+
+/********** Helper functions ************/
+-(CGPoint)generatePositionAtRow:(int)row
+                    atColumn:(int)col{
+    return CGPointMake(boardOriginX + (col * tileSize), boardOriginY + (row * tileSize));
 }
 
 @end

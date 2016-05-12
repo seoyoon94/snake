@@ -20,6 +20,7 @@
 @property (weak, nonatomic) id delegate;
 
 -(void)initGame;
+-(void)startGame;
 -(void)generateFood;
 -(void)moveSnake;
 -(BOOL)validMove;

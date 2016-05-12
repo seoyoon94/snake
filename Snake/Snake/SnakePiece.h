@@ -19,5 +19,6 @@
 
 -(void)initWithRow:(int)row
               column:(int)col;
-
+-(void)changeRow:(int)rowIdx
+          column:(int)colIdx;
 @end

@@ -17,7 +17,12 @@
 -(void)initWithRow:(int)rowIdx column:(int)colIdx{
     [self setRow:rowIdx];
     [self setCol:colIdx];
-    sprite = [[SKSpriteNode alloc] init];
+    sprite = nil;
+}
+
+-(void)changeRow:(int)rowIdx column:(int)colIdx{
+    [self setRow:rowIdx];
+    [self setCol:colIdx];
 }
 
 @end

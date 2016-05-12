@@ -12,6 +12,8 @@
 @protocol SnakeProtocol <NSObject>
 
 -(void)snakeDidMove:(SnakeModel *)game;
+-(void)snakeAteFood:(SnakeModel *)game;
+-(void)gameDidStart:(SnakeModel *)game;
 -(void)gameDidEnd:(SnakeModel *)game;
 -(void)foodGeneratedAtRow:(int)row
                    column:(int)col;

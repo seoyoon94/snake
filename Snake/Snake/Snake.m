@@ -58,25 +58,26 @@
 
 /* Move the snake one location forward depending on which direction the snake is moving */
 -(void)movePieces{
-    SnakePiece *newPiece = [[SnakePiece alloc] init];
-    switch (direction) {
-        case UP:
-            [newPiece initWithRow:([head row] - 1) column:[head col]];
-            break;
-        case DOWN:
-            [newPiece initWithRow:([head row] + 1) column:[head col]];
-            break;
-        case LEFT:
-            [newPiece initWithRow:[head row] column:([head col] + 1)];
-            break;
-        case RIGHT:
-            [newPiece initWithRow:[head row] column:([head col] - 1)];
-            break;
-        default:
-            break;
+    for(int i = 0; i < [snakeQueue size]; i++){
+        SnakePiece* piece = snakeQueue[i];
+        switch (direction) {
+            case UP:
+                [snakeQueue[i] changeRow:([piece row] - 1) column:[piece col]];
+                break;
+            case DOWN:
+                [snakeQueue[i] changeRow:([piece row] + 1) column:[piece col]];
+                break;
+            case LEFT:
+                [snakeQueue[i] changeRow:[piece row] column:([piece col] + 1)];
+                break;
+            case RIGHT:
+                [snakeQueue[i] changeRow:[piece row] column:([piece col] - 1)];
+                break;
+            default:
+                break;
+        }
     }
-    [self setHead:newPiece];
-    [snakeQueue popBack];
+    [self setHead:[snakeQueue front]];
     [self setTail:[snakeQueue back]];
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E00A87241CE4BFEE00EC49DA /* snakePiece.png in Resources */ = {isa = PBXBuildFile; fileRef = E00A87231CE4BFEE00EC49DA /* snakePiece.png */; };
 		E0606DEB1CE3A5AD004922E6 /* NSMutableArray+Deque.m in Sources */ = {isa = PBXBuildFile; fileRef = E0606DEA1CE3A5AD004922E6 /* NSMutableArray+Deque.m */; };
 		E0606DEE1CE3AB44004922E6 /* SnakePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = E0606DED1CE3AB44004922E6 /* SnakePiece.m */; };
 		E0606DF11CE3B53B004922E6 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = E0606DF01CE3B53B004922E6 /* Food.m */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E00A87231CE4BFEE00EC49DA /* snakePiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snakePiece.png; sourceTree = "<group>"; };
 		E0606DE91CE3A5AD004922E6 /* NSMutableArray+Deque.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Deque.h"; sourceTree = "<group>"; };
 		E0606DEA1CE3A5AD004922E6 /* NSMutableArray+Deque.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Deque.m"; sourceTree = "<group>"; };
 		E0606DEC1CE3AB44004922E6 /* SnakePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnakePiece.h; path = Snake/SnakePiece.h; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				E0606DF61CE3F9E0004922E6 /* background.png */,
 				E0606DFD1CE40626004922E6 /* gameTile.png */,
 				E0606E011CE41386004922E6 /* food.png */,
+				E00A87231CE4BFEE00EC49DA /* snakePiece.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0F734921CE3762F004C8121 /* GameScene.sks in Resources */,
+				E00A87241CE4BFEE00EC49DA /* snakePiece.png in Resources */,
 				E0606DF71CE3F9E0004922E6 /* background.png in Resources */,
 				E0F7349D1CE3762F004C8121 /* LaunchScreen.storyboard in Resources */,
 				E0606DFE1CE40626004922E6 /* gameTile.png in Resources */,

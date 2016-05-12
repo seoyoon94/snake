@@ -9,11 +9,13 @@
 #pragma once
 
 #import <Foundation/Foundation.h>
+#import "SpriteKit/SpriteKit.h"
 
 @interface Food : NSObject
 
 @property int row;
 @property int col;
+@property SKSpriteNode *sprite;
 
 -(void)initWithRow:(int)rowIdx
               column:(int)colIdx;
