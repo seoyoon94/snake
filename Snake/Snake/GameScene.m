@@ -62,7 +62,7 @@
     [background addChild:logo];
     
     SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"AppleSDGothicNeoBold"];
-    scoreLabel.text = @"Score  :  0";
+    scoreLabel.text = @"0";
     scoreLabel.name = @"score";
     scoreLabel.fontSize = 30;
     scoreLabel.fontColor = [SKColor colorWithRed:70/255.0 green:129/255.0 blue:101/255.0 alpha:1];
@@ -150,7 +150,9 @@
 
 -(void)updateScore:(int)score{
     SKLabelNode *labelNode = (SKLabelNode *)[background childNodeWithName:@"score"];
-    labelNode.text = [NSString stringWithFormat:@"Score  :  %d", score];
+    [labelNode runAction:[SKAction scaleBy:3 duration:0.5]];
+    labelNode.text = [NSString stringWithFormat:@"%d", score];
+    [labelNode runAction:[SKAction scaleBy:1/3.0 duration:0.5]];
 }
 
 
