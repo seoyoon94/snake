@@ -13,14 +13,16 @@
 @synthesize row;
 @synthesize col;
 @synthesize sprite;
+@synthesize direction;
 
--(void)initWithRow:(int)rowIdx column:(int)colIdx{
+-(void)initWithRow:(int)rowIdx column:(int)colIdx direction:(enum Orientation)dir{
     [self setRow:rowIdx];
     [self setCol:colIdx];
-    sprite = nil;
+    [self setSprite:nil];
+    [self setDirection:dir];
 }
 
--(void)changeRow:(int)rowIdx column:(int)colIdx{
+-(void)changeRow:(int)rowIdx column:(int)colIdx direction:(enum Orientation)dir{
     [self setRow:rowIdx];
     [self setCol:colIdx];
 }

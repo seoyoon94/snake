@@ -37,7 +37,7 @@
     //Row will always be half the board size added with half the snake length
     snake = [[Snake alloc] init];
     SnakePiece *head = [[SnakePiece alloc] init];
-    [head initWithRow:(boardSize/2 + 1) column:boardSize/2];
+    [head initWithRow:(boardSize/2 + 1) column:boardSize/2 direction:DOWN];
     [snake initWithDirection:DOWN head:head length:3];
     for(int i = 0; i < [snake length] - 1; i++){
         [snake addPiece];
@@ -77,7 +77,7 @@
 -(void)moveSnake{
     //Keep track of previous tail so we can null the location of the previous tail if no food eaten
     SnakePiece *tail = [[SnakePiece alloc] init];
-    [tail initWithRow:[[snake tail] row] column:[[snake tail] col]];
+    [tail initWithRow:[[snake tail] row] column:[[snake tail] col] direction:[[snake tail] direction]];
     
     [snake movePieces];
     //End game if we hit ourselves or the wall

@@ -103,8 +103,8 @@
     for(SnakePiece *piece in [model snakeQueue]){
         SKSpriteNode *sprite = [piece sprite];
         CGPoint newLocation = [self generatePositionAtRow:[piece row] atColumn:[piece col]];
-        SKAction *moveToAction = [SKAction moveTo:newLocation duration:0.1];
-        moveToAction.timingMode = SKActionTimingEaseOut;
+        SKAction *moveToAction = [SKAction moveTo:newLocation duration:0.15];
+        moveToAction.timingMode = SKActionTimingEaseInEaseOut;
         [sprite runAction:moveToAction];
     }
 }
@@ -116,6 +116,8 @@
     food.zPosition = 1;
     [background addChild:food];
 }
+
+
 
 /********** Helper functions ************/
 -(CGPoint)generatePositionAtRow:(int)row

@@ -29,7 +29,7 @@
     snakeQueue = [[NSMutableArray alloc] init];
     
     SnakePiece *piece = [[SnakePiece alloc] init];
-    [piece initWithRow:[head row] column:[head col]];
+    [piece initWithRow:[head row] column:[head col] direction:dir];
     [snakeQueue pushBack:piece];
 }
 
@@ -37,17 +37,17 @@
 -(void)addPiece{
     SnakePiece *piece = [[SnakePiece alloc] init];
     switch (direction) {
-        case UP:
-            [piece initWithRow:([tail row] + 1) column:[tail col]];
-            break;
         case DOWN:
-            [piece initWithRow:([tail row] - 1) column:[tail col]];
+            [piece initWithRow:([tail row] + 1) column:[tail col] direction:[tail direction]];
+            break;
+        case UP:
+            [piece initWithRow:([tail row] - 1) column:[tail col] direction:[tail direction]];
             break;
         case LEFT:
-            [piece initWithRow:[tail row] column:([tail col] - 1)];
+            [piece initWithRow:[tail row] column:([tail col] - 1) direction:[tail direction]];
             break;
         case RIGHT:
-            [piece initWithRow:[tail row] column:([tail col] + 1)];
+            [piece initWithRow:[tail row] column:([tail col] + 1) direction:[tail direction]];
             break;
         default:
             break;
@@ -58,24 +58,26 @@
 
 /* Move the snake one location forward depending on which direction the snake is moving */
 -(void)movePieces{
-    for(int i = 0; i < [snakeQueue size]; i++){
-        SnakePiece* piece = snakeQueue[i];
-        switch (direction) {
-            case UP:
-                [snakeQueue[i] changeRow:([piece row] - 1) column:[piece col]];
-                break;
-            case DOWN:
-                [snakeQueue[i] changeRow:([piece row] + 1) column:[piece col]];
-                break;
-            case LEFT:
-                [snakeQueue[i] changeRow:[piece row] column:([piece col] + 1)];
-                break;
-            case RIGHT:
-                [snakeQueue[i] changeRow:[piece row] column:([piece col] - 1)];
-                break;
-            default:
-                break;
-        }
+    for(int i = (int)[snakeQueue size] - 1; i > 0; --i){
+        SnakePiece* piece = snakeQueue[i - 1];
+        [snakeQueue[i] changeRow:[piece row] column:[piece col] direction:[piece direction]];
+    }
+    SnakePiece *piece = [snakeQueue front];
+    switch (direction) {
+        case DOWN:
+            [piece changeRow:([piece row] - 1) column:[piece col] direction:direction];
+            break;
+        case UP:
+            [piece changeRow:([piece row] + 1) column:[piece col] direction:direction];
+            break;
+        case LEFT:
+            [piece changeRow:[piece row] column:([piece col] + 1) direction:direction];
+            break;
+        case RIGHT:
+            [piece changeRow:[piece row] column:([piece col] - 1) direction:direction];
+            break;
+        default:
+            break;
     }
     [self setHead:[snakeQueue front]];
     [self setTail:[snakeQueue back]];

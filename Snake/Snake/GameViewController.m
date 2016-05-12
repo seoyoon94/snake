@@ -7,6 +7,7 @@
 //
 
 #import "GameViewController.h"
+#import "Snake.h"
 #import "GameScene.h"
 #import "SnakeModel.h"
 
@@ -57,6 +58,8 @@
     [model setDelegate:self];
     [model initGame];
     [model startGame];
+    
+    [self initGesturesOnView:skView];
 }
     
 -(BOOL)shouldAutorotate
@@ -81,6 +84,46 @@
 
 -(BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+/********** Gesture Recognition *************/
+-(void)initGesturesOnView:(SKView *)view{
+    UISwipeGestureRecognizer* swipeUpGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler:)];
+    swipeUpGestureRecognizer.direction = UISwipeGestureRecognizerDirectionUp;
+    
+    UISwipeGestureRecognizer* swipeDownGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler:)];
+    swipeDownGestureRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
+    
+    UISwipeGestureRecognizer* swipeLeftGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler:)];
+    swipeLeftGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    UISwipeGestureRecognizer* swipeRightGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler:)];
+    swipeRightGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [view addGestureRecognizer:swipeDownGestureRecognizer];
+    [view addGestureRecognizer:swipeUpGestureRecognizer];
+    [view addGestureRecognizer:swipeLeftGestureRecognizer];
+    [view addGestureRecognizer:swipeRightGestureRecognizer];
+}
+
+-(void)swipeHandler:(UISwipeGestureRecognizer *)sender{
+    enum Orientation direction = LEFT;
+    switch (sender.direction) {
+        case UISwipeGestureRecognizerDirectionDown:
+            direction = DOWN;
+            break;
+        case UISwipeGestureRecognizerDirectionLeft:
+            direction = LEFT;
+            break;
+        case UISwipeGestureRecognizerDirectionRight:
+            direction = RIGHT;
+            break;
+        case UISwipeGestureRecognizerDirectionUp:
+            direction = UP;
+        default:
+            break;
+    }
+    [[model snake] setDirection:direction];
 }
 
 /********** Protocol Implementations ************/

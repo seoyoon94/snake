@@ -14,6 +14,7 @@
 @class Food;
 
 @interface Snake : NSObject{
+    @public
     NS_ENUM(int, Orientation){
         LEFT = 0,
         UP = 1,
