@@ -9,6 +9,7 @@
 #import "GameViewController.h"
 #import "Snake.h"
 #import "GameScene.h"
+#import "MenuScene.h"
 #import "SnakeModel.h"
 
 @implementation SKScene (Unarchive)
@@ -41,25 +42,16 @@
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
+    skView.showsFPS = NO;
+    skView.showsNodeCount = NO;
     /* Sprite Kit applies additional optimizations to improve rendering performance */
-    skView.ignoresSiblingOrder = YES;
+    skView.ignoresSiblingOrder = NO;
     
     // Create and configure the scene.
-    gameScene = [[GameScene alloc] init];
-    [gameScene setDelegate: self];
-    gameScene.scaleMode = SKSceneScaleModeAspectFill;
-    // Present the scene.
-    [skView presentScene:gameScene];
-    
-    //Initialize the game
-    model = [[SnakeModel alloc] init];
-    [model setDelegate:self];
-    [model initGame];
-    [model startGame];
-    
-    [self initGesturesOnView:skView];
+    MenuScene *menuScene = [[MenuScene alloc] init];
+    [menuScene setDelegate:self];
+    menuScene.scaleMode = SKSceneScaleModeAspectFill;
+    [skView presentScene:menuScene];
 }
     
 -(BOOL)shouldAutorotate
@@ -106,23 +98,46 @@
     [view addGestureRecognizer:swipeRightGestureRecognizer];
 }
 
+/* Change direction of the snake depending on the swipe direction
+   The snake cannot change to the polar opposite direction */
 -(void)swipeHandler:(UISwipeGestureRecognizer *)sender{
     enum Orientation direction = LEFT;
     switch (sender.direction) {
         case UISwipeGestureRecognizerDirectionDown:
-            direction = DOWN;
+            if([[model snake] direction] != UP){
+                direction = DOWN;
+            }
+            else{
+                direction = UP;
+            }
             break;
         case UISwipeGestureRecognizerDirectionLeft:
-            direction = LEFT;
+            if([[model snake] direction] != RIGHT){
+                direction = LEFT;
+            }
+            else{
+                direction = RIGHT;
+            }
             break;
         case UISwipeGestureRecognizerDirectionRight:
-            direction = RIGHT;
+            if([[model snake] direction] != LEFT){
+                direction = RIGHT;
+            }
+            else{
+                direction = LEFT;
+            }
             break;
         case UISwipeGestureRecognizerDirectionUp:
-            direction = UP;
+            if([[model snake] direction] != DOWN){
+                direction = UP;
+            }
+            else{
+                direction = DOWN;
+            }
         default:
             break;
     }
+    
     [[model snake] setDirection:direction];
 }
 
@@ -130,7 +145,6 @@
 -(void) tickTimer:(GameScene *)scene{
     [model moveSnake];
 }
-
 
 -(void)snakeDidMove:(SnakeModel *)game{
     [gameScene redrawSnake:[game snake]];
@@ -146,6 +160,14 @@
 
 -(void)gameDidEnd:(SnakeModel *)game{
     [gameScene stopTicking];
+    MenuScene *menuScene = [[MenuScene alloc] init];
+    [menuScene setDelegate:self];
+    menuScene.scaleMode = SKSceneScaleModeAspectFill;
+    
+    SKView *skView = (SKView *)self.view;
+    skView.ignoresSiblingOrder = NO;
+    SKTransition *sceneTransition = [SKTransition moveInWithDirection:SKTransitionDirectionUp duration:1];
+    [skView presentScene:menuScene transition:sceneTransition];
 }
 
 -(void)gameGeneratedFirstFood:(SnakeModel *)game{
@@ -155,5 +177,29 @@
 -(void)gameGeneratedFood:(SnakeModel *)game{
     [gameScene redrawFood:[game food]];
 }
+
+-(void)gameUpdatedScore:(SnakeModel *)game{
+    [gameScene updateScore:[game score]];
+}
+
+-(void)playButtonPressed:(MenuScene *)scene{
+    gameScene = [[GameScene alloc] init];
+    [gameScene setDelegate: self];
+    gameScene.scaleMode = SKSceneScaleModeAspectFill;
+    // Present the scene.
+    SKView *skView = (SKView *)self.view;
+    skView.ignoresSiblingOrder = NO;
+    SKTransition *sceneTransition = [SKTransition revealWithDirection:SKTransitionDirectionUp duration:1];
+    [skView presentScene:gameScene transition:sceneTransition];
+    
+    //Initialize the game
+    model = [[SnakeModel alloc] init];
+    [model setDelegate:self];
+    [model initGame];
+    [model startGame];
+    
+    [self initGesturesOnView:skView];
+}
+
 
 @end

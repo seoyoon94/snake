@@ -17,5 +17,6 @@
 -(void)gameDidEnd:(SnakeModel *)game;
 -(void)gameGeneratedFirstFood:(SnakeModel *)game;
 -(void)gameGeneratedFood:(SnakeModel *)game;
+-(void)gameUpdatedScore:(SnakeModel *)game;
 
 @end

@@ -20,9 +20,11 @@
 @synthesize snake;
 @synthesize food;
 @synthesize delegate;
+@synthesize score;
 
 -(void)initGame{
     [self setBoardSize:11];
+    [self setScore:0];
     
     gameBoard = [[NSMutableArray alloc] initWithCapacity:boardSize];
     for(int i = 0; i < boardSize; i++){
@@ -32,6 +34,7 @@
         }
         [gameBoard addObject:column];
     }
+    
     
     //Initialize the entire snake with individual pieces.
     //Row will always be half the board size added with half the snake length
@@ -92,6 +95,8 @@
             [delegate snakeAteFood:self];
             [self generateFood];
             [delegate gameGeneratedFood:self];
+            score++;
+            [delegate gameUpdatedScore:self];
         }
         else{
             gameBoard[[tail row]][[tail col]] = [NSNull null];

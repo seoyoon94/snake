@@ -60,6 +60,14 @@
     logo.position = CGPointMake(width/2, 7 * height/8);
     logo.zPosition = 0;
     [background addChild:logo];
+    
+    SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"AppleSDGothicNeoBold"];
+    scoreLabel.text = @"Score  :  0";
+    scoreLabel.name = @"score";
+    scoreLabel.fontSize = 30;
+    scoreLabel.fontColor = [SKColor colorWithRed:70/255.0 green:129/255.0 blue:101/255.0 alpha:1];
+    scoreLabel.position = CGPointMake(width/2, boardOriginY - scoreLabel.frame.size.height * 4);
+    [background addChild:scoreLabel];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -140,6 +148,10 @@
     [sprite runAction:[SKAction sequence:@[fadeInAction, scaleAction]]];
 }
 
+-(void)updateScore:(int)score{
+    SKLabelNode *labelNode = (SKLabelNode *)[background childNodeWithName:@"score"];
+    labelNode.text = [NSString stringWithFormat:@"Score  :  %d", score];
+}
 
 
 /********** Helper functions ************/

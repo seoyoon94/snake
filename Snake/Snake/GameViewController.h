@@ -10,11 +10,12 @@
 #import <SpriteKit/SpriteKit.h>
 #import "TimerProtocol.h"
 #import "SnakeProtocol.h"
+#import "MenuProtocol.h"
 
 @class SnakeModel;
 @class GameScene;
 
-@interface GameViewController : UIViewController <TimerProtocol, SnakeProtocol>
+@interface GameViewController : UIViewController <TimerProtocol, SnakeProtocol, MenuProtocol>
 
 @property SnakeModel *model;
 @property GameScene *gameScene;

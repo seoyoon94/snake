@@ -28,6 +28,7 @@
 -(void)redrawSnake:(Snake *)model;
 -(void)drawFood:(Food *)food;
 -(void)redrawFood:(Food *)food;
+-(void)updateScore:(int)score;
 
 -(CGPoint)generatePositionAtRow:(int)row
                     atColumn:(int)col;

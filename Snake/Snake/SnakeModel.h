@@ -18,6 +18,7 @@
 @property Snake *snake;
 @property Food *food;
 @property (weak, nonatomic) id delegate;
+@property int score;
 
 -(void)initGame;
 -(void)startGame;
