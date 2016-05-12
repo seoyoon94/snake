@@ -15,7 +15,7 @@
 -(void)snakeAteFood:(SnakeModel *)game;
 -(void)gameDidStart:(SnakeModel *)game;
 -(void)gameDidEnd:(SnakeModel *)game;
--(void)foodGeneratedAtRow:(int)row
-                   column:(int)col;
+-(void)gameGeneratedFirstFood:(SnakeModel *)game;
+-(void)gameGeneratedFood:(SnakeModel *)game;
 
 @end

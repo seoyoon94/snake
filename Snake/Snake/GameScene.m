@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "Snake.h"
 #import "SnakePiece.h"
+#import "Food.h"
 #import "TimerProtocol.h"
 
 @implementation GameScene
@@ -27,6 +28,7 @@
     CGFloat height = [UIScreen mainScreen].bounds.size.height;
     self.size = CGSizeMake(width, height);
     
+    //Set background where all nodes will go
     background = [[SKSpriteNode alloc] initWithImageNamed:@"background.png"];
     background.position = CGPointMake(0, 0);
     background.anchorPoint = CGPointMake(0, 0);
@@ -38,6 +40,7 @@
     [self setBoardOriginX:tileSize];
     [self setBoardOriginY:height/2 - (5 * tileSize)];
     
+    //Set up game board
     for(int i = 0; i < 11; i++){
         for(int j = 0; j < 11; j++){
             SKSpriteNode *gameTile = [[SKSpriteNode alloc] initWithImageNamed:@"gameTile.png"];
@@ -50,6 +53,13 @@
     
     [self setLevelSpeedInMillis:600];
     [self setPreviousTick:nil];
+    
+    //Set up main logo
+    SKSpriteNode *logo = [[SKSpriteNode alloc] initWithImageNamed:@"snakeLogo.png"];
+    logo.size = CGSizeMake(width/2, width/2);
+    logo.position = CGPointMake(width/2, 7 * height/8);
+    logo.zPosition = 0;
+    [background addChild:logo];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -109,12 +119,25 @@
     }
 }
 
--(void)drawFoodAtRow:(int)row column:(int)col{
-    SKSpriteNode *food = [[SKSpriteNode alloc] initWithImageNamed:@"food.png"];
-    food.size = CGSizeMake(tileSize, tileSize);
-    food.position = [self generatePositionAtRow:row atColumn:col];
-    food.zPosition = 0.8;
-    [background addChild:food];
+-(void)drawFood:(Food *)food{
+    SKSpriteNode *tmpFood = [[SKSpriteNode alloc] initWithImageNamed:@"food.png"];
+    tmpFood.size = CGSizeMake(tileSize, tileSize);
+    tmpFood.position = [self generatePositionAtRow:[food row] atColumn:[food col]];
+    tmpFood.zPosition = 0.8;
+    [background addChild:tmpFood];
+    [food setSprite:tmpFood];
+}
+
+-(void)redrawFood:(Food *)food{
+    SKSpriteNode *sprite = [food sprite];
+    [sprite runAction:[SKAction fadeOutWithDuration:0.2]];
+    [sprite runAction:[SKAction scaleBy:0.5 duration:0.2]];
+    CGPoint newLocation = [self generatePositionAtRow:[food row] atColumn:[food col]];
+    SKAction *moveAction = [SKAction moveTo:newLocation duration:0];
+    SKAction *fadeInAction = [SKAction fadeInWithDuration:0.2];
+    SKAction *scaleAction = [SKAction scaleBy:2 duration:0.2];
+    [sprite runAction:moveAction];
+    [sprite runAction:[SKAction sequence:@[fadeInAction, scaleAction]]];
 }
 
 

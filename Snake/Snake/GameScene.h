@@ -9,6 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 
 @class Snake;
+@class Food;
 
 @interface GameScene : SKScene
 
@@ -25,8 +26,8 @@
 -(void)drawSnake:(Snake *)model;
 -(void)drawAddedPiece:(Snake *)model;
 -(void)redrawSnake:(Snake *)model;
--(void)drawFoodAtRow:(int)row
-              column:(int)col;
+-(void)drawFood:(Food *)food;
+-(void)redrawFood:(Food *)food;
 
 -(CGPoint)generatePositionAtRow:(int)row
                     atColumn:(int)col;

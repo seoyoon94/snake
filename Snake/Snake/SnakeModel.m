@@ -53,6 +53,7 @@
     if(food == nil){
         food = [[Food alloc] init];
         [self generateFood];
+        [delegate gameGeneratedFirstFood:self];
     }
     [delegate gameDidStart:self];
 }
@@ -70,7 +71,6 @@
     }
     [food initWithRow:row column:column];
     gameBoard[row][column] = food;
-    [delegate foodGeneratedAtRow:row column:column];
 }
 
 /* Move the snake each time the timer ticks. If the snake collides, then end game */
@@ -91,6 +91,7 @@
             [snake addPiece];
             [delegate snakeAteFood:self];
             [self generateFood];
+            [delegate gameGeneratedFood:self];
         }
         else{
             gameBoard[[tail row]][[tail col]] = [NSNull null];

@@ -148,8 +148,12 @@
     [gameScene stopTicking];
 }
 
--(void)foodGeneratedAtRow:(int)row column:(int)col{
-    [gameScene drawFoodAtRow:row column:col];
+-(void)gameGeneratedFirstFood:(SnakeModel *)game{
+    [gameScene drawFood:[game food]];
+}
+
+-(void)gameGeneratedFood:(SnakeModel *)game{
+    [gameScene redrawFood:[game food]];
 }
 
 @end

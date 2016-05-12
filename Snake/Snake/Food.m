@@ -17,7 +17,6 @@
 -(void)initWithRow:(int)rowIdx column:(int)colIdx{
     [self setRow:rowIdx];
     [self setCol:colIdx];
-    sprite = nil;
 }
 
 @end

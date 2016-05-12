@@ -14,6 +14,7 @@
 		E0606DF71CE3F9E0004922E6 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E0606DF61CE3F9E0004922E6 /* background.png */; };
 		E0606DFE1CE40626004922E6 /* gameTile.png in Resources */ = {isa = PBXBuildFile; fileRef = E0606DFD1CE40626004922E6 /* gameTile.png */; };
 		E0606E021CE41386004922E6 /* food.png in Resources */ = {isa = PBXBuildFile; fileRef = E0606E011CE41386004922E6 /* food.png */; };
+		E0F6FF001CE50D5400DA15EB /* snakeLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E0F6FEFF1CE50D5400DA15EB /* snakeLogo.png */; };
 		E0F7348A1CE3762F004C8121 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F734891CE3762F004C8121 /* main.m */; };
 		E0F7348D1CE3762F004C8121 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F7348C1CE3762F004C8121 /* AppDelegate.m */; };
 		E0F734901CE3762F004C8121 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F7348F1CE3762F004C8121 /* GameScene.m */; };
@@ -58,6 +59,7 @@
 		E0606DF61CE3F9E0004922E6 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Snake/background.png; sourceTree = "<group>"; };
 		E0606DFD1CE40626004922E6 /* gameTile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameTile.png; sourceTree = "<group>"; };
 		E0606E011CE41386004922E6 /* food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food.png; sourceTree = "<group>"; };
+		E0F6FEFF1CE50D5400DA15EB /* snakeLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snakeLogo.png; sourceTree = "<group>"; };
 		E0F734851CE3762F004C8121 /* Snake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0F734891CE3762F004C8121 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E0F7348B1CE3762F004C8121 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				E0606DFD1CE40626004922E6 /* gameTile.png */,
 				E0606E011CE41386004922E6 /* food.png */,
 				E00A87231CE4BFEE00EC49DA /* snakePiece.png */,
+				E0F6FEFF1CE50D5400DA15EB /* snakeLogo.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				E0F734921CE3762F004C8121 /* GameScene.sks in Resources */,
 				E00A87241CE4BFEE00EC49DA /* snakePiece.png in Resources */,
 				E0606DF71CE3F9E0004922E6 /* background.png in Resources */,
+				E0F6FF001CE50D5400DA15EB /* snakeLogo.png in Resources */,
 				E0F7349D1CE3762F004C8121 /* LaunchScreen.storyboard in Resources */,
 				E0606DFE1CE40626004922E6 /* gameTile.png in Resources */,
 				E0606E021CE41386004922E6 /* food.png in Resources */,
