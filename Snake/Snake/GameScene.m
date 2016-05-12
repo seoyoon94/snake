@@ -113,7 +113,7 @@
     SKSpriteNode *food = [[SKSpriteNode alloc] initWithImageNamed:@"food.png"];
     food.size = CGSizeMake(tileSize, tileSize);
     food.position = [self generatePositionAtRow:row atColumn:col];
-    food.zPosition = 1;
+    food.zPosition = 0.8;
     [background addChild:food];
 }
 

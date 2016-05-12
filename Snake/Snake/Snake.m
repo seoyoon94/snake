@@ -36,7 +36,7 @@
 /* Add a piece to the tail of the snake */
 -(void)addPiece{
     SnakePiece *piece = [[SnakePiece alloc] init];
-    switch (direction) {
+    switch ([tail direction]) {
         case DOWN:
             [piece initWithRow:([tail row] + 1) column:[tail col] direction:[tail direction]];
             break;
@@ -44,10 +44,10 @@
             [piece initWithRow:([tail row] - 1) column:[tail col] direction:[tail direction]];
             break;
         case LEFT:
-            [piece initWithRow:[tail row] column:([tail col] - 1) direction:[tail direction]];
+            [piece initWithRow:[tail row] column:([tail col] + 1) direction:[tail direction]];
             break;
         case RIGHT:
-            [piece initWithRow:[tail row] column:([tail col] + 1) direction:[tail direction]];
+            [piece initWithRow:[tail row] column:([tail col] - 1) direction:[tail direction]];
             break;
         default:
             break;
@@ -71,10 +71,10 @@
             [piece changeRow:([piece row] + 1) column:[piece col] direction:direction];
             break;
         case LEFT:
-            [piece changeRow:[piece row] column:([piece col] + 1) direction:direction];
+            [piece changeRow:[piece row] column:([piece col] - 1) direction:direction];
             break;
         case RIGHT:
-            [piece changeRow:[piece row] column:([piece col] - 1) direction:direction];
+            [piece changeRow:[piece row] column:([piece col] + 1) direction:direction];
             break;
         default:
             break;
