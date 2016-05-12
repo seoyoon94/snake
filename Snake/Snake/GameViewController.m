@@ -45,18 +45,17 @@
     /* Sprite Kit applies additional optimizations to improve rendering performance */
     skView.ignoresSiblingOrder = YES;
     
-    //Initialize the game
-    model = [[SnakeModel alloc] init];
-    [model initGame];
-    [model setDelegate:self];
-    
     // Create and configure the scene.
     gameScene = [[GameScene alloc] init];
     [gameScene setDelegate: self];
     gameScene.scaleMode = SKSceneScaleModeAspectFill;
-    
     // Present the scene.
     [skView presentScene:gameScene];
+    
+    //Initialize the game
+    model = [[SnakeModel alloc] init];
+    [model setDelegate:self];
+    [model initGame];
 }
 
 -(BOOL)shouldAutorotate

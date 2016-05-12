@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "Snake.h"
+#import "SnakePiece.h"
 #import "TimerProtocol.h"
 
 @implementation GameScene
@@ -57,7 +58,10 @@
 }
 
 -(void)redrawSnake:(Snake *)model{
-    
+    //Use SKAction to move each individual spite in the snake to the new location.
+    for(SnakePiece *piece in [model snakeQueue]){
+        SKSpriteNode *sprite = [piece sprite];
+    }
 }
 
 -(void)drawFoodAtRow:(int)row column:(int)col{
