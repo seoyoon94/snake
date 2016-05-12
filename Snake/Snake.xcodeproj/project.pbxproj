@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E00A87241CE4BFEE00EC49DA /* snakePiece.png in Resources */ = {isa = PBXBuildFile; fileRef = E00A87231CE4BFEE00EC49DA /* snakePiece.png */; };
+		E05AE5F71CE538970012C73E /* eat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E05AE5F61CE538970012C73E /* eat.mp3 */; };
+		E05AE5F91CE53D100012C73E /* gameTheme.wav in Resources */ = {isa = PBXBuildFile; fileRef = E05AE5F81CE53D100012C73E /* gameTheme.wav */; };
+		E05AE5FB1CE540ED0012C73E /* contact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E05AE5FA1CE540ED0012C73E /* contact.mp3 */; };
 		E0606DEB1CE3A5AD004922E6 /* NSMutableArray+Deque.m in Sources */ = {isa = PBXBuildFile; fileRef = E0606DEA1CE3A5AD004922E6 /* NSMutableArray+Deque.m */; };
 		E0606DEE1CE3AB44004922E6 /* SnakePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = E0606DED1CE3AB44004922E6 /* SnakePiece.m */; };
 		E0606DF11CE3B53B004922E6 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = E0606DF01CE3B53B004922E6 /* Food.m */; };
@@ -50,6 +53,9 @@
 
 /* Begin PBXFileReference section */
 		E00A87231CE4BFEE00EC49DA /* snakePiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snakePiece.png; sourceTree = "<group>"; };
+		E05AE5F61CE538970012C73E /* eat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eat.mp3; sourceTree = "<group>"; };
+		E05AE5F81CE53D100012C73E /* gameTheme.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameTheme.wav; sourceTree = "<group>"; };
+		E05AE5FA1CE540ED0012C73E /* contact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = contact.mp3; sourceTree = "<group>"; };
 		E0606DE91CE3A5AD004922E6 /* NSMutableArray+Deque.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Deque.h"; sourceTree = "<group>"; };
 		E0606DEA1CE3A5AD004922E6 /* NSMutableArray+Deque.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Deque.m"; sourceTree = "<group>"; };
 		E0606DEC1CE3AB44004922E6 /* SnakePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnakePiece.h; path = Snake/SnakePiece.h; sourceTree = "<group>"; };
@@ -116,6 +122,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E05AE5F51CE538880012C73E /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				E05AE5F61CE538970012C73E /* eat.mp3 */,
+				E05AE5F81CE53D100012C73E /* gameTheme.wav */,
+				E05AE5FA1CE540ED0012C73E /* contact.mp3 */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 		E0606DF21CE3B553004922E6 /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +173,7 @@
 			children = (
 				E0606DE91CE3A5AD004922E6 /* NSMutableArray+Deque.h */,
 				E0606DEA1CE3A5AD004922E6 /* NSMutableArray+Deque.m */,
+				E05AE5F51CE538880012C73E /* Sounds */,
 				E0606DF81CE3F9FF004922E6 /* Images */,
 				E0606DF41CE3DD78004922E6 /* Protocols */,
 				E0606DF21CE3B553004922E6 /* Blocks */,
@@ -329,6 +346,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E05AE5F71CE538970012C73E /* eat.mp3 in Resources */,
 				E0F734921CE3762F004C8121 /* GameScene.sks in Resources */,
 				E00A87241CE4BFEE00EC49DA /* snakePiece.png in Resources */,
 				E0606DF71CE3F9E0004922E6 /* background.png in Resources */,
@@ -338,7 +356,9 @@
 				E0606DFE1CE40626004922E6 /* gameTile.png in Resources */,
 				E0606E021CE41386004922E6 /* food.png in Resources */,
 				E0F7349A1CE3762F004C8121 /* Assets.xcassets in Resources */,
+				E05AE5F91CE53D100012C73E /* gameTheme.wav in Resources */,
 				E0F734981CE3762F004C8121 /* Main.storyboard in Resources */,
+				E05AE5FB1CE540ED0012C73E /* contact.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

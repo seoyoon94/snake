@@ -51,7 +51,7 @@
         }
     }
     
-    [self setLevelSpeedInMillis:600];
+    [self setLevelSpeedInMillis:400];
     [self setPreviousTick:nil];
     
     //Set up main logo

@@ -11,6 +11,7 @@
 #import "GameScene.h"
 #import "MenuScene.h"
 #import "SnakeModel.h"
+#import "AudioToolbox/AudioToolbox.h"
 
 @implementation SKScene (Unarchive)
 
@@ -52,6 +53,8 @@
     [menuScene setDelegate:self];
     menuScene.scaleMode = SKSceneScaleModeAspectFill;
     [skView presentScene:menuScene];
+    
+    [menuScene runAction:[SKAction repeatActionForever:[SKAction playSoundFileNamed:@"gameTheme.wav" waitForCompletion:YES]]];
 }
     
 -(BOOL)shouldAutorotate
@@ -151,7 +154,9 @@
 }
 
 -(void)snakeAteFood:(SnakeModel *)game{
+    [gameScene runAction:[SKAction playSoundFileNamed:@"eat.mp3" waitForCompletion:NO]];
     [gameScene drawAddedPiece:[game snake]];
+    
 }
 
 -(void)gameDidStart:(SnakeModel *)game{
@@ -159,6 +164,7 @@
 }
 
 -(void)gameDidEnd:(SnakeModel *)game{
+    [gameScene runAction:[SKAction playSoundFileNamed:@"contact.mp3" waitForCompletion:NO]];
     [gameScene stopTicking];
     MenuScene *menuScene = [[MenuScene alloc] init];
     [menuScene setDelegate:self];
